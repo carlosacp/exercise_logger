@@ -15,9 +15,18 @@ class LogEntryRowView extends Backbone.View
   tagName: "tr"
   template: _.template($('#row_item_template').html())
 
+  events:
+    'click #remove_entry': 'remove_entry'
+
+  initialize: =>
+    @listenTo @model, 'destroy', @remove
+
   render: =>
     @$el.html(@template(@model.toJSON()))
     @
+
+  remove_entry: =>
+    @model.destroy()
 
 class AppView extends Backbone.View
 
@@ -36,10 +45,14 @@ class AppView extends Backbone.View
     @listenTo(@entry_list, 'all', @render)
     @entry_list.fetch({update: true})
 
+
   render: =>
     total = @entry_list.total_time()
     @summary_info.html(@summary_template({total: total}))
     @
+
+  update_list: =>
+    
 
   add_entry: (entry) =>
     view = new LogEntryRowView(model: entry)
