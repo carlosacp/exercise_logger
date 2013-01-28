@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <title>Log de Exercícios</title>
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<script type="text/template" id="row-item">
+	<script type="text/template" id="row_item_template">
 		<td><%- time %></td>
 				<td>corrida</td>
 				<td>Hoje</td>
 				<td><button class="btn">apagar</button></td>
+	</script>
+	<script type="text/template" id="summary_template">
+		<h1>Você já fez <%- total %> horas de exercício</h1>
 	</script>
   <script type="text/javascript" src="backbone/json2.js"></script>
   <script type="text/javascript" src="jquery/jquery.min.js"></script>
@@ -22,7 +25,7 @@
 	<div class="page-header">
 		<h1>Log de Exercícios</h1>
 	</div>
-	<div id="exercise-log-app">
+	<div id="exercise_log_app">
 
 		<form class="form-inline" onsubmit="return false;">
 			<input id="input_time" type="text" placeholder="Tempo">
@@ -38,16 +41,9 @@
 				</tr>
 			</thead>
 			<tbody id="log_entries">
-				<tr>
-					<td>5h</td>
-					<td>Natação</td>
-					<td>Algum Dia</td>
-					<td><button class="btn">apagar</button></td>
-				</tr>
 			</tbody>
 		</table>
-		<div class="page-header">
-			<h1>Você já fez 10 horas de exercício</h1>
+		<div id="summary_info" class="page-header">
 		</div>
 	</div>
 </body>
