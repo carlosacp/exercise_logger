@@ -11,7 +11,7 @@ class LogEntryRowView extends Backbone.View
   template: _.template($('#row-item').html())
 
   render: =>
-    @$el.html(@template())
+    @$el.html(@template(@model.toJSON()))
     @
 
 class AppView extends Backbone.View
@@ -19,13 +19,21 @@ class AppView extends Backbone.View
   el: '#exercise-log-app'
 
   events:
-    'click #add_entry': 'add_entry'
+    'click #add_new_entry': 'new_entry'
 
   initialize: =>
+    @input_time = @$('#input_time')
+    @entry_list = new LogEntryList
+    @listenTo(@entry_list, 'add', @add_entry)
+    @entry_list.fetch()
 
-  add_entry: =>
-    entry = new LogEntryRowView
-    @$('#log_entries').append entry.render().el
+  add_entry: (entry) =>
+    view = new LogEntryRowView(model: entry)
+    @$('#log_entries').append view.render().el
+
+  new_entry: =>
+    @entry_list.create({time: @input_time.val()})
+    @input_time.val('')
 
 
 $ ->
