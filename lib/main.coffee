@@ -31,11 +31,8 @@ class LogEntryRowView extends Backbone.View
 class AppView extends Backbone.View
 
   el: '#exercise_log_app'
-
   summary_template: _.template($('#summary_template').html())
-
   exercise_option_template: _.template($('#exercise_option_template').html())
-
   exercise_options: ['corrida', 'natação', 'bicicleta']
 
   events:
@@ -70,8 +67,12 @@ class AppView extends Backbone.View
     @$('#log_entries').append view.render().el
 
   new_entry: =>
-    @entry_list.create({time: @input_time.val()})
+    entry = {time: @input_time.val(), exercise_type: @get_selected_type()}
+    @entry_list.create(entry)
     @input_time.val('')
+
+  get_selected_type: =>
+    $("option:selected", @select_exercise).val()
 
 
 $ ->
