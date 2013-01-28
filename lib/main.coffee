@@ -39,11 +39,16 @@ class AppView extends Backbone.View
     'click #add_new_entry': 'new_entry'
 
   initialize: =>
+    @start_date_picker()
     @summary_info = @$('#summary_info')
     @input_time = @$('#input_time')
     @select_exercise = @$('#select_exercise')
     @populate_exercise_options()
     @create_entry_list()
+
+  start_date_picker: =>
+    @date_picker = $('#input_date')
+    @date_picker.datepicker()
 
   create_entry_list: =>
     @entry_list = new LogEntryList

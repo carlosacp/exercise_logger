@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Log de Exercícios</title>
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="datepicker/css/datepicker.css" rel="stylesheet" media="screen">
 	<script type="text/template" id="row_item_template">
 		<td><%- time %>h</td>
 		<td><%- exercise_type %></td>
@@ -21,6 +22,7 @@
   <script type="text/javascript" src="backbone/underscore-min.js"></script>
   <script type="text/javascript" src="backbone/backbone-min.js"></script>
   <script type="text/javascript" src="backbone/backbone-localstorage.js"></script>
+  <script type="text/javascript" src="datepicker/js/bootstrap-datepicker.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="main.js"></script>
 </head>
@@ -33,6 +35,7 @@
 		<form class="form-inline" onsubmit="return false;">
 			<input id="input_time" type="text" placeholder="Tempo (h)">
 			<select id="select_exercise" type="text"></select>
+			<input id="input_date" type="text">
 			<button id="add_new_entry" class="btn">add</button>
 		</form>
 		<table class="table table-bordered table-hover">
