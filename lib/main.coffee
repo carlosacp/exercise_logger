@@ -34,25 +34,36 @@ class AppView extends Backbone.View
 
   summary_template: _.template($('#summary_template').html())
 
+  exercise_option_template: _.template($('#exercise_option_template').html())
+
+  exercise_options: ['corrida', 'natação', 'bicicleta']
+
   events:
     'click #add_new_entry': 'new_entry'
 
   initialize: =>
-    @summary_info = $('#summary_info')
+    @summary_info = @$('#summary_info')
     @input_time = @$('#input_time')
+    @select_exercise = @$('#select_exercise')
+    @populate_exercise_options()
+    @create_entry_list()
+
+  create_entry_list: =>
     @entry_list = new LogEntryList
     @listenTo(@entry_list, 'add', @add_entry)
     @listenTo(@entry_list, 'all', @render)
     @entry_list.fetch({update: true})
 
+  populate_exercise_options: =>
+    _.each @exercise_options, @add_exercise_option
+
+  add_exercise_option: (option) =>
+    @select_exercise.append @exercise_option_template({option: option})
 
   render: =>
     total = @entry_list.total_time()
     @summary_info.html(@summary_template({total: total}))
     @
-
-  update_list: =>
-    
 
   add_entry: (entry) =>
     view = new LogEntryRowView(model: entry)
