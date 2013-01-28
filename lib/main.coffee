@@ -34,7 +34,7 @@ class AppView extends Backbone.View
     @entry_list = new LogEntryList
     @listenTo(@entry_list, 'add', @add_entry)
     @listenTo(@entry_list, 'all', @render)
-    @entry_list.fetch()
+    @entry_list.fetch({update: true})
 
   render: =>
     total = @entry_list.total_time()
