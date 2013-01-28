@@ -5,8 +5,9 @@
   <title>Log de Exercícios</title>
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
   <script type="text/javascript" src="jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="backbone/underscore-min.js"></script>
+  <script type="text/javascript" src="backbone/backbone-min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="main.js"></script>
 </head>
 <body>
 	<div class="page-header">
@@ -27,12 +28,6 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>1h</td>
-				<td>corrida</td>
-				<td>Hoje</td>
-				<td><button class="btn">apagar</button></td>
-			</tr>
-			<tr>
 				<td>5h</td>
 				<td>Natação</td>
 				<td>Algum Dia</td>
@@ -43,6 +38,12 @@
 	<div class="page-header">
 		<h1>Você já fez 10 horas de exercício</h1>
 	</div>
+	<script type="text/template" id="row-item">
+				<td>1h</td>
+				<td>corrida</td>
+				<td>Hoje</td>
+				<td><button class="btn">apagar</button></td>
+	</script>
 </body>
 </html>
 
