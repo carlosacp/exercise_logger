@@ -72,13 +72,16 @@ class AppView extends Backbone.View
     @$('#log_entries').append view.render().el
 
   new_entry: =>
-    entry = {time: @input_time.val(), exercise_type: @get_selected_type()}
+    entry = {time: @input_time.val(), exercise_type: @get_selected_type(), date_info: @get_date()}
     @entry_list.create(entry)
     @input_time.val('')
 
   get_selected_type: =>
     $("option:selected", @select_exercise).val()
 
+  get_date: =>
+    debugger
+    @date_picker.val()
 
 $ ->
   new AppView

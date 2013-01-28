@@ -24,8 +24,6 @@ Simple Log for Exercises
 
 2. TODO
 
-  * Add right date value on table row
-
   * Need to test at least in Firefox
 
   * Do some validations
