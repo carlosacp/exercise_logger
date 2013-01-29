@@ -48,7 +48,7 @@ class AppView extends Backbone.View
 
   start_date_picker: =>
     @date_picker = $('#input_date')
-    @date_picker.datepicker()
+    @date_picker.datepicker(format: 'dd-mm-yyyy')
 
   create_entry_list: =>
     @entry_list = new LogEntryList
@@ -80,7 +80,6 @@ class AppView extends Backbone.View
     $("option:selected", @select_exercise).val()
 
   get_date: =>
-    debugger
     @date_picker.val()
 
 $ ->

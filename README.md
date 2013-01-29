@@ -31,3 +31,5 @@ Simple Log for Exercises
   * Translate dates to Portuguese (maybe use [this datepicker](https://github.com/eternicode/bootstrap-datepicker) )
   
   * work a little bit more on css
+
+  * Deploy somewhere
