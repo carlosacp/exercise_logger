@@ -72,9 +72,12 @@ class AppView extends Backbone.View
     @$('#log_entries').append view.render().el
 
   new_entry: =>
-    entry = {time: @input_time.val(), exercise_type: @get_selected_type(), date_info: @get_date()}
-    @entry_list.create(entry)
-    @input_time.val('')
+    if parseInt(@input_time.val()) >= 0
+      entry = {time: @input_time.val(), exercise_type: @get_selected_type(), date_info: @get_date()}
+      @entry_list.create(entry)
+      @input_time.val('')
+    else
+      alert("O horário tem que ter valor maior que 0")
 
   get_selected_type: =>
     $("option:selected", @select_exercise).val()
